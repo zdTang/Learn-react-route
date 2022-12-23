@@ -52,4 +52,12 @@ Without client side routing, the browser will serialize the form's data automati
 
 We can test this out by clicking the "New" button in our app. The app should blow up because the Vite server isn't configured to handle a POST request (it sends a 404, though it should probably be a 405 🤷).
 
+# Creating contacts
+
 Instead of sending that POST to the Vite server to create a new contact, let's use client side routing instead.
+
+The createContact method just creates an empty contact with no name or data or anything. But it does still create a record, promise!
+
+🧐 Wait a sec ... How did the sidebar update? Where did we call the action? Where's the code to refetch the data? Where are useState, onSubmit and useEffect?!
+
+This is where the "old school web" programming model shows up. As we discussed earlier, <Form> prevents the browser from sending the request to the server and sends it to your route action instead. In web semantics, a POST usually means some data is changing. By convention, React Router uses this as a hint to automatically revalidate the data on the page after the action finishes. That means all of your useLoaderData hooks update and the UI stays in sync with your data automatically! Pretty cool.
