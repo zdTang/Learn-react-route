@@ -15,3 +15,11 @@ However, it's not inside of our root layout 😠
 We want the contact component to render inside of the <Root> layout like this.
 You'll now see the root layout again but a blank page on the right.
 We need to tell the root route where we want it to render its child routes. We do that with <Outlet>.
+
+# Client side route
+
+You may or may not have noticed, but when we click the links in the sidebar, the browser is doing a full document request for the next URL instead of using React Router.
+
+Client side routing allows our app to update the URL without requesting another document from the server. Instead, the app can immediately render new UI. Let's make it happen with <Link>.
+
+You can open the network tab in the browser devtools to see that it's not requesting documents anymore
