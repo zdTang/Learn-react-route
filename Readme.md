@@ -105,3 +105,13 @@ For these cases, we have the useFetcher hook. It allows us to communicate with l
 The ★ button on the contact page makes sense for this. We aren't creating or deleting a new record, we don't want to change pages, we simply want to change the data on the page we're looking at.
 
 👉 Change the <Favorite> form to a fetcher form
+
+# Optimistic UI
+
+You probably noticed the app felt kind of unresponsive when we clicked the the favorite button from the last section. Once again, we added some network latency because you're going to have it in the real world!
+
+To give the user some feedback, we could put the star into a loading state with fetcher.state (a lot like navigation.state from before), but we can do something even better this time. We can use a strategy called "optimistic UI"
+
+The fetcher knows the form data being submitted to the action, so it's available to you on fetcher.formData. We'll use that to immediately update the star's state, even though the network hasn't finished. If the update eventually fails, the UI will revert to the real data.
+
+If you click the button now you should see the star immediately change to the new state. Instead of always rendering the actual data, we check if the fetcher has any formData being submitted, if so, we'll use that instead. When the action is done, the fetcher.formData will no longer exist and we're back to using the actual data. So even if you write bugs in your optimistic UI code, it'll eventually go back to the correct state 🥹
