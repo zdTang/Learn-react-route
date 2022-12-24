@@ -71,3 +71,7 @@ If you refresh the page after searching, the form field no longer has the value 
 In other words, the URL and our form state are out of sync.
 
 👉 Return q from your loader and set it as the search field default value
+
+# Fix "back" button issue
+
+Now for problem (1), clicking the back button and updating the input. We can bring in useEffect from React to manipulate the form's state in the DOM directly.

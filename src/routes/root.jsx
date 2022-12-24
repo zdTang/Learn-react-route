@@ -7,6 +7,7 @@ import {
   useNavigation,
 } from "react-router-dom";
 import { getContacts, createContact } from "../contacts";
+import { useEffect } from "react";
 
 export async function loader({ request }) {
   const url = new URL(request.url);
@@ -23,6 +24,10 @@ export async function action() {
 export default function Root() {
   const { contacts, q } = useLoaderData();
   const navigation = useNavigation();
+
+  useEffect(() => {
+    document.getElementById("q").value = q;
+  }, [q]);
 
   return (
     <>
