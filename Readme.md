@@ -61,3 +61,13 @@ The createContact method just creates an empty contact with no name or data or a
 🧐 Wait a sec ... How did the sidebar update? Where did we call the action? Where's the code to refetch the data? Where are useState, onSubmit and useEffect?!
 
 This is where the "old school web" programming model shows up. As we discussed earlier, <Form> prevents the browser from sending the request to the server and sends it to your route action instead. In web semantics, a POST usually means some data is changing. By convention, React Router uses this as a hint to automatically revalidate the data on the page after the action finishes. That means all of your useLoaderData hooks update and the UI stays in sync with your data automatically! Pretty cool.
+
+# Synchronizing URLs to Form State
+
+There are a couple of UX issues here that we can take care of quickly.
+
+If you click back after a search, the form field still has the value you entered even though the list is no longer filtered.
+If you refresh the page after searching, the form field no longer has the value in it, even though the list is filtered
+In other words, the URL and our form state are out of sync.
+
+👉 Return q from your loader and set it as the search field default value
