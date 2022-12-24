@@ -79,3 +79,11 @@ Now for problem (1), clicking the back button and updating the input. We can bri
 Now as you type, the form is submitted automatically!
 
 Note the argument to submit. We're passing in event.currentTarget.form. The currentTarget is the DOM node the event is attached to, and the currentTarget.form is the input's parent form node. The submit function will serialize and submit any form you pass to it.
+
+# Adding Search Spinner
+
+In a production app, it's likely this search will be looking for records in a database that is too large to send all at once and filter client side. That's why this demo has some faked network latency.
+
+Without any loading indicator, the search feels kinda sluggish. Even if we could make our database faster, we'll always have the user's network latency in the way and out of our control. For a better UX, let's add some immediate UI feedback for the search. For this we'll use useNavigation again.
+
+The navigation.location will show up when the app is navigating to a new URL and loading the data for it. It then goes away when there is no pending navigation anymore.
