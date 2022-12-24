@@ -87,3 +87,11 @@ In a production app, it's likely this search will be looking for records in a da
 Without any loading indicator, the search feels kinda sluggish. Even if we could make our database faster, we'll always have the user's network latency in the way and out of our control. For a better UX, let's add some immediate UI feedback for the search. For this we'll use useNavigation again.
 
 The navigation.location will show up when the app is navigating to a new URL and loading the data for it. It then goes away when there is no pending navigation anymore.
+
+# Managing the History Stack
+
+Now that the form is submitted for every key stroke, if we type the characters "seba" and then delete them with backspace, we end up with 7 new entries in the stack 😂. We definitely don't want this
+
+We only want to replace search results, not the page before we started searching, so we do a quick check if this is the first search or not and then decide to replace.
+
+Each key stroke no longer creates new entries, so the user can click back out of the search results without having to click it 7 times 😅.
