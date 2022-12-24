@@ -75,3 +75,7 @@ In other words, the URL and our form state are out of sync.
 # Fix "back" button issue
 
 Now for problem (1), clicking the back button and updating the input. We can bring in useEffect from React to manipulate the form's state in the DOM directly.
+
+Now as you type, the form is submitted automatically!
+
+Note the argument to submit. We're passing in event.currentTarget.form. The currentTarget is the DOM node the event is attached to, and the currentTarget.form is the input's parent form node. The submit function will serialize and submit any form you pass to it.
