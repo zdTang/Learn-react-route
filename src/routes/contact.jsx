@@ -2,12 +2,15 @@ import { Form, useLoaderData } from "react-router-dom";
 import { getContact } from "../contacts";
 
 export async function loader({ params }) {
+  console.log("In the contact Loader");
+  console.log(`params=${params}`);
   return getContact(params.contactId);
 }
 
 export default function Contact() {
+  console.log("In the Contact function");
   const contact = useLoaderData();
-
+  console.dir(`contact is ${contact}`);
   return (
     <div id="contact">
       <div>

@@ -61,3 +61,7 @@ The createContact method just creates an empty contact with no name or data or a
 🧐 Wait a sec ... How did the sidebar update? Where did we call the action? Where's the code to refetch the data? Where are useState, onSubmit and useEffect?!
 
 This is where the "old school web" programming model shows up. As we discussed earlier, <Form> prevents the browser from sending the request to the server and sends it to your route action instead. In web semantics, a POST usually means some data is changing. By convention, React Router uses this as a hint to automatically revalidate the data on the page after the action finishes. That means all of your useLoaderData hooks update and the UI stays in sync with your data automatically! Pretty cool.
+
+# Read the data flow
+
+'contacts' is child of 'root'

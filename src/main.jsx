@@ -26,6 +26,7 @@ const router = createBrowserRouter([
   },
 ]);
 
+console.log("Begin mount");
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router} />

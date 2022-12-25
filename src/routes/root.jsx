@@ -3,16 +3,22 @@ import { getContacts, createContact } from "../contacts";
 
 export async function loader() {
   const contacts = await getContacts();
+  console.log("in the root loader");
+  console.log(`contacts is ${contacts}`);
   return { contacts };
 }
 
 export async function action() {
   const contact = await createContact();
+  console.log("in the root action");
+  console.log(`contact is ${contact}`);
   return { contact };
 }
 
 export default function Root() {
+  console.log("In Root");
   const { contacts } = useLoaderData();
+  console.dir(`contacts is ${contacts}`);
   return (
     <>
       <div id="sidebar">
